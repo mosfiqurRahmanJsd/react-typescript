@@ -2,10 +2,12 @@ import React from 'react'
 
 interface IProps {
     name: string, 
-    email?: string
+    email: string,
+    handleRemove: (email: string) => void
 }
 
-const Contact = ({name, email = "N/A"}: IProps) : JSX.Element => {
+
+const Contact = ({name, email = "N/A", handleRemove}: IProps) : JSX.Element => {
     // return undefined;
     return (
   
@@ -16,6 +18,7 @@ const Contact = ({name, email = "N/A"}: IProps) : JSX.Element => {
             <p>
                 <strong>Email: </strong> {email}
             </p>
+            <button onClick={() => handleRemove(email)}>Remove</button>
         </div>
     
     )

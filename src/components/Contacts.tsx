@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Contact, {ContactDemo} from './Contact'
+import Contact, {} from './Contact'
 
 interface IContact {
     name: string, 
@@ -20,6 +20,11 @@ const Contacts = () => {
     }
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setContact({...contact, [e.target.name]: e.target.value});
+
+    const handleRemove = (email: string) => {
+        const newContactList = contactList.filter(c => c.email !== email)
+        setContactList(newContactList);
+    }
 
 
     console.log("contactList", contactList);
@@ -49,15 +54,12 @@ const Contacts = () => {
                 <button onClick={onClick}>Add</button>
             </div>
             {
-                contactList.map((con) => <Contact name= {con.name} key={con.name} email={con.email}></Contact>)
+                contactList.map((con) => <Contact name= {con.name} key={con.name} email={con.email} handleRemove={handleRemove}></Contact>)
             }
 
             
             
             
-                        
-            
-            <ContactDemo name= "Someone 2"></ContactDemo>
 
         </div>
     )
